@@ -1,5 +1,6 @@
 # Curriculo_gabriela
 Curriculo:
-  https://silvestrelago.github.io/Curriculo_gabriela/
+  https://silvestrelago.github.io/Trabalhos_LP_II/Curriculo
+<br>
 Login: 
   https://silvestrelago.github.io/Trabalhos_LP_II/Login
