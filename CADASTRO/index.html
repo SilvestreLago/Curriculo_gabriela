@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <fieldset>
+
+            <section>
+                <h1>Cadastre-se</h1>
+                <hr>
+            </section>
+
+            <section>
+                <label for="username">Usuário</label><br>
+                <input type="text" name="username" class="campo" placeholder="Usuário" id="user" required onblur="V_user()"><br>
+                <span id="alertu">O campo não pode estar vazio.</span>
+            </section><br>
+            
+            <section>
+                <label for="senha">Sua senha</label><br>
+                <input type="password" name="senha" class="campo" placeholder="1234" id="senha" required onblur="V_senha()"><br>
+                <span id="alerts">O campo não pode estar vazio.</span>
+            </section><br>
+
+            <section>
+                <label for="conf.senha">Confirmar senha</label> <br>
+                <input type="password" name="conf.senha" class="campo" placeholder="1234" id="csenha" required onblur="V_csenha()"><br>
+                <span id="alertcs">Senhas diferentes.</span>
+                <span id="alertcs2">O campo não pode estar vazio.</span>
+            </section><br>
+
+            <section>
+                <input type="checkbox" name="condições" class="condições" >
+                <label for="condições">Concordo com termos e condições</label>
+            </section>
+
+            <section>
+                <input type="submit" value="Cadastrar" class="btn" id="cadastrar" onclick="V_senha(), V_user(), V_csenha()"><br>
+            </section>
+
+            <section>
+                <label for="cadastro">Já tem conta? <a href="#">Login</a></label><br>
+            </section>
+
+        </fieldset>
+    </form>
+    <script src="scripts.js"></script>
+</body>
+</html>
