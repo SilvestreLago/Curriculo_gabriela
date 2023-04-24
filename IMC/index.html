@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Site do IMC</h1>
+    <h2>O que é IMC:</h2>
+    <p id="text">IMC, (Índice de massa corporal) é um cálculo universal adotado pela OMS (Organização Mundial da Saúde) para classificar padrões de saúde relacionados ao peso, como desnutrição e obesidade.</p>
+    <form>
+        <fieldset>
+            <section>
+                <p id="title">Calculadora IMC</p>
+            </section>
+
+            <section>
+                <label for="Peso">Peso:</label>
+                <input type="text" id="peso" placeholder="75.5">
+            
+                <label for="Altura">Altura:</label>
+                <input type="text" id="altura" placeholder="1.75">
+
+                <input type="button" value="Calcular" id="btn" onclick="Calcular()">
+            </section>
+
+            <section>
+                <p id="IMC">Seu IMC:</p>
+            </section>
+
+            <section>
+                <p id="error"></p>
+            </section>
+
+        </fieldset>
+    </form>
+
+    <footer>Copyright &copy; Silvestre - 2023</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
