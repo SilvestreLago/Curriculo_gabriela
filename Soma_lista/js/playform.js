@@ -2,6 +2,11 @@
 //lendo o botão do HTML
 var botao = document.querySelector("#botao");
 
+function exlui(btn) {
+    var ex = $(btn).closest('tr').remove()
+}
+  
+
 //Lendo o evento de clique no botão e chamando uma função quando clicado
 botao.addEventListener('click', function(event){
 
@@ -52,7 +57,7 @@ botao.addEventListener('click', function(event){
         elementoTr.appendChild(criaTd(dados.num1,"primeiro"));
         elementoTr.appendChild(criaTd(dados.num2,"segundo"));
         elementoTr.appendChild(criaTd(dados.soma,"resultado"));
-        elementoTr.appendChild((document.createElement('button')));
+        $('<button type="submit" class="btn btn-default" class="botao_ex" onclick="exlui(this)">Excluir</button>').appendTo(elementoTr)
 
         return elementoTr;
        
