@@ -1,13 +1,13 @@
-# Curriculo_gabriela
+# Trabalhos
 Curriculo:
-  https://silvestrelago.github.io/Trabalhos_LP_II/Curriculo
+  https://silvestrelago.github.io/Trabalhos_IFBA/Curriculo
 <br>
 Login: 
-  https://silvestrelago.github.io/Trabalhos_LP_II/Login
+  https://silvestrelago.github.io/Trabalhos_IFBA/Login
 <br>
 Cadastro:
-  https://silvestrelago.github.io/Trabalhos_LP_II/CADASTRO/
+  https://silvestrelago.github.io/Trabalhos_IFBA/CADASTRO/
 <br>
 IMC:
-  https://silvestrelago.github.io/Trabalhos_LP_II/IMC/
+  https://silvestrelago.github.io/Trabalhos_IFBA/IMC/
   
