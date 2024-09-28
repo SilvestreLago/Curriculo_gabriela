@@ -16,4 +16,7 @@ Pré_Modernismo:
 <br>
 Pedidos: (Com PHP, não funcionando no pages)
   https://silvestrelago.github.io/Trabalhos_IFBA/Pedidos/
+<br>
+SPT:
+  https://silvestrelago.github.io/Trabalhos_IFBA/SPT
   
