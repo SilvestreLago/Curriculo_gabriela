@@ -18,5 +18,7 @@ Pedidos: (Com PHP, não funcionando no pages)
   https://silvestrelago.github.io/Trabalhos_IFBA/Pedidos/
 <br>
 SPT:
-  https://silvestrelago.github.io/Trabalhos_IFBA/SPT
-  
+  https://silvestrelago.github.io/Trabalhos_IFBA/SPT/
+<br>
+Projeto de academia com bootstrap:
+  https://silvestrelago.github.io/Trabalhos_IFBA/ProjetoBootstrap
