@@ -1,0 +1,42 @@
+/* GERAL */
+*{
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* NAVBAR */
+.logo{
+    border-radius: 10%;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.613);
+}
+.navbar, .navbar .nav-link{
+    background: linear-gradient(to right, #007222, #008d13);
+    color: #ffffff;
+}
+.navbar-toggler{
+    background-color: #ffffff;
+}
+.breadcrumb-item a{
+    color: white;
+}
+
+/* CARROSEL */
+.carousel{
+    margin-top: 1%;
+}
+
+/* TEXTO */
+.txt{
+    margin-top: 1%;
+    text-align: center;
+    padding: 1%;
+}
+
+.card-text{
+    text-align: justify;
+}
+
+/* FOOTER */
+.footer{
+    background: linear-gradient(to right, #007222, #008d13);
+    color: #ffffff;
+}
