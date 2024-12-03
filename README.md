@@ -22,3 +22,6 @@ SPT:
 <br>
 Projeto de academia com bootstrap:
   https://silvestrelago.github.io/Trabalhos_IFBA/ProjetoBootstrap/
+<br>
+Redesign: 
+  https://silvestrelago.github.io/Trabalhos_IFBA/Redesign_IFBA
