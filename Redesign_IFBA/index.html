@@ -9,6 +9,48 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <!-- CONTATO -->
+    <button type="button" class="btn btn-primary fixed-bottom" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Fale conosco
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+          <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+        </svg>
+      </span>
+    </button>
+
+    <!-- MODAL CONTATO -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action="">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Fale conosco</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                </svg></span>
+                <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-text">Comentário</span>
+                <textarea class="form-control" aria-label="With textarea">Digite o que quer nos contar...</textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -63,7 +105,7 @@
     </nav>
 
     <!-- CONTEUDO -->
-    <div class="container h-100 w-100 d-flex align-items-center justify-content-center">
+    <div class="container h-100 w-100 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
       <div class="container txt">
         <h1>CURSOS TÉCNICOS INTEGRADO</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -75,7 +117,7 @@
                 <p class="card-text">Profissional especializado em sistemas eletromecânicos, atuando na coordenação, instalação e manutenção de equipamentos e instalações elétricas industriais. Realiza programação, supervisão de defeitos em máquinas e projeta sistemas de eletrônica embarcada e controle de motores. Também contribui para a racionalização e uso de fontes alternativas de energia.</p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-outline-secondary">Ir para</button>
+                <a type="button" href="#eletro" class="btn btn-outline-secondary">Ir para</a>
               </div>
             </div>
           </div>
@@ -87,7 +129,7 @@
                 <p class="card-text">Profissional especializado em criação, integração e manutenção de sistemas, desenvolvendo soluções personalizadas para software desktop e web. Utiliza linguagens modernas e boas práticas de desenvolvimento, além de atuar em modelagem e manutenção de banco de dados. Também oferece suporte técnico para redes e infraestrutura, com foco na solução de falhas em sistemas digitais.</p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-outline-primary">Ir para</button>
+                <a type="button" href="#info" class="btn btn-outline-primary">Ir para</a>
               </div>
             </div>
           </div>
@@ -100,7 +142,7 @@
                 </p>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-outline-danger">Ir para</button>
+                <a type="button" href="#minera" class="btn btn-outline-danger">Ir para</a>
               </div>
             </div>
           </div>
@@ -108,9 +150,10 @@
       </div>
     </div>
 
+
     <!-- CURSOS -->
     <main>
-      <section class="text-bg-dark p-5 w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; height: 100vh;">
+      <section id="eletro" class="text-bg-dark p-5 w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; min-height: 100vh;">
         <article class="container">
             <h3>Eletromecânica</h3>
 
@@ -136,7 +179,6 @@
                 Compartilhar</button>
             </div>
             </article>
-            <br>
             <p class="mt-5"><strong>Perfil</strong>: Desenvolve atividades de coordenação e assistência técnica em planejamento, montagem, instalação, controle, manutenção e avaliação de sistemas eletromecânicos; realiza atividades de programação e orientação na fabricação de peças, componentes e máquinas eletromecânicas; opera e supervisiona equipamentos elétricos industriais, identificando e sugerindo a solução de defeitos em máquinas elétricas; supervisiona a implantação de instalações elétricas prediais e industriais; projeta sistemas de eletrônica embarcada, bem como para instrumentação e controle de motores; identifica os elementos de conversão, transformação, transporte e distribuição de energia, aplicando-os nos trabalhos de implantação e manutenção do processo produtivo; participa de atividades de utilização e conservação de energia, propondo a racionalização e o uso de fontes alternativas.</p>
             
             <p><strong>Onde atua</strong>: empresas de manutenção e automação; indústrias; laboratórios de controle de qualidade e pesquisa; concessionárias de energia.</p>
@@ -152,7 +194,7 @@
             </article>
         </article>
     </section>
-      <section class=" p-5  w-100 d-flex flex-column justify-content-center" style="background-color: #0254c0; font-size: 18px; color: #fff; height: 100vh;">
+      <section id="info" class=" p-5  w-100 d-flex flex-column justify-content-center" style="background-color: #0254c0; font-size: 18px; color: #fff; min-height: 100vh;">
           <article class="container">
               <h3>Informática</h3>
               <article>
@@ -200,7 +242,7 @@
           </article>
       </section>
 
-      <section class="p-5  w-100 d-flex flex-column justify-content-center" style="  background-color: #6d0528; font-size: 18px; color: #fff; height: 100vh;" >
+      <section id="minera" class="p-5  w-100 d-flex flex-column justify-content-center" style="  background-color: #6d0528; font-size: 18px; color: #fff; min-height: 100vh;" >
           <article class="container">
               <h3>Mineração</h3>
 
@@ -255,7 +297,10 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Institucional</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+                      <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"/>
+                      <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/>
+                    </svg> Institucional</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">O instituto</a></li>
@@ -279,7 +324,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Campi</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+                      <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
+                    </svg> Campi</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">Escolha o campus</a></li>
@@ -296,7 +343,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Redes Sociais</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-threads" viewBox="0 0 16 16">
+                      <path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/>
+                    </svg> Redes Sociais</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">Twitter</a></li>
@@ -314,7 +363,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Acesso à informação</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                    </svg> Acesso à informação</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">Acesso à informação</a></li>
@@ -338,7 +389,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Ensino</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+                      <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783"/>
+                    </svg> Ensino</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">Seja nosso aluno</a></li>
@@ -361,7 +414,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <h5>Sistemas</h5>
+                    <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pc-display" viewBox="0 0 16 16">
+                      <path d="M8 1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zm1 13.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0m2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0M9.5 1a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM9 3.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1h-5a.5.5 0 0 0-.5.5M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12H6v2h-.5a.5.5 0 0 0 0 1H7v-4H1.5a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5H7V2z"/>
+                    </svg> Sistemas</h5>
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" target="_blank" href="#">Biblioteca</a></li>
@@ -388,6 +443,5 @@
         </div>
       </div>
     </footer>
-
 </body>
 </html>
