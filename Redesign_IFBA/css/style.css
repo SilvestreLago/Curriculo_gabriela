@@ -2,6 +2,15 @@
 *{
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+a{
+    color: white;
+}
+
+/* CONTATO */
+.fixed-bottom{
+    left: unset;
+    margin: 1%;
+}   
 
 /* NAVBAR */
 .logo{
@@ -39,4 +48,8 @@
 .footer{
     background: linear-gradient(to right, #007222, #008d13);
     color: #ffffff;
+}
+
+.mt-5{
+    margin-top: 0px !important;
 }
