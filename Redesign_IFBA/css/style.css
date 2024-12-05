@@ -9,14 +9,48 @@ a{
 /* CONTATO */
 .fixed-bottom{
     left: unset;
-    margin: 1%;
+    margin-right: 2%;
+    margin-bottom: 1%;
 }   
+
+#voltTopo{
+    right: unset;
+    margin-left: 2%;
+    margin-bottom: 1%;
+}
+
+#envFeedback{
+    display: none;
+}
+
+#envSuccess{
+    display: none;
+}
 
 /* NAVBAR */
 .logo{
-    border-radius: 10%;
+    border-radius: 2%;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.613);
 }
+
+#full{
+    display: block;
+}
+
+#half{
+    display: none;
+}
+
+@media (max-width: 640px) {
+    #full{
+        display: none;
+    }
+    
+    #half{
+        display: block;
+    }
+}
+
 .navbar, .navbar .nav-link{
     background: linear-gradient(to right, #007222, #008d13);
     color: #ffffff;
@@ -28,9 +62,29 @@ a{
     color: white;
 }
 
-/* CARROSEL */
-.carousel{
-    margin-top: 1%;
+/* CURSOS */
+#eletro {
+    background-color: #212529;
+    transition: background-color 0.5s ease;
+}
+#eletro.ativo {
+    background-color: #4E5B69;
+}
+
+#info {
+    background-color: #0254c0;
+    transition: background-color 0.5s ease;
+}
+#info.ativo {
+    background-color: #4a88d8;
+}
+
+#minera {
+    background-color: #6d0528;
+    transition: background-color 0.5s ease;
+}
+#minera.ativo {
+    background-color: #AD345C;
 }
 
 /* TEXTO */

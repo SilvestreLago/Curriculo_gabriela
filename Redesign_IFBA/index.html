@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos -- IFBA - Instituto Federal de Educação, Ciência e Tecnologia da Bahia</title>
+
+    <title>Técnico Integrado — IFBA -  Instituto Federal de Educação, Ciência e Tecnologia da Bahia Instituto Federal da Bahia</title>
+    <link rel="shortcut icon" href="https://portal.ifba.edu.br/++theme++tema-extra/img/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+
+    <!-- VLIBRAS -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </head>
 <body>
+    <!-- VLIBRAS -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
     <!-- CONTATO -->
-    <button type="button" class="btn btn-primary fixed-bottom" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-success fixed-bottom" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Fale conosco
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
@@ -23,7 +45,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="">
+          <form action="" id="envForms">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">Fale conosco</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -34,30 +56,48 @@
                 <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                   <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                 </svg></span>
-                <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" required>
               </div>
 
               <div class="input-group">
                 <span class="input-group-text">Comentário</span>
-                <textarea class="form-control" aria-label="With textarea">Digite o que quer nos contar...</textarea>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Digite o que quer nos contar..." required></textarea>
               </div>
             </div>
             <div class="modal-footer">
+              <button class="btn btn-primary" type="button" id="envFeedback" disabled>
+                <span class="spinner-grow spinner-grow-sm" aria-hidden="true" id="spin"></span>
+                <span id="envSuccess">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                  </svg>
+                </span>
+                <span role="status" id="envStatus">Enviando Feedback</span>
+              </button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary">Enviar</button>
+              <button type="submit" class="btn btn-success" id="btnFeedback">Enviar</button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
+    <!-- VOLTAR TOPO -->
+    <a href="#topo" type="button" class="btn btn-success fixed-bottom" id="voltTopo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+      </svg>
+    </a>
+
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar" id="topo">
         <div class="container-fluid">
           <a class="navbar-brand" href="./index.html">
-            <img src="./img/logo.jpg" alt="Logo" width="120" class="logo d-inline-block align-text-top">
+            <img src="./img/logo2.webp" alt="Logo" width="540" class="logo align-text-top img-fluid" id="full">
+            <img src="./img/logo.webp" alt="Logo" width="120" class="logo align-text-top img-fluid" id="half">
+
           </a>
-          <h1 class="card-title">Instituto Federal de Educação, Ciência e Tecnologia da Bahia</h1>
+          <h1 class="card-title"></h1>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -87,7 +127,7 @@
               </li>
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-dark" type="submit">Search</button>
+                <button class="btn btn-outline-light" type="submit">Search</button>
               </form>
             </ul>
             <!-- Redirecionamento -->
@@ -111,49 +151,49 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col">
             <div class="card w-100 h-100">
-              <img src="./img/eletromecanica.jpg" class="card-img-top" alt="...">
+              <img src="./img/eletro.webp" class="card-img-top img-fluid" alt="Logo Eletromecânica">
               <div class="card-body">
                 <h5 class="card-title">Eletromecânica</h5>
                 <p class="card-text">Profissional especializado em sistemas eletromecânicos, atuando na coordenação, instalação e manutenção de equipamentos e instalações elétricas industriais. Realiza programação, supervisão de defeitos em máquinas e projeta sistemas de eletrônica embarcada e controle de motores. Também contribui para a racionalização e uso de fontes alternativas de energia.</p>
               </div>
               <div class="card-footer">
-                <a type="button" href="#eletro" class="btn btn-outline-secondary">Ir para</a>
+                <a type="button" href="#eletro" class="btn btn-outline-secondary" id="btnEletro">Ir para</a>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card w-100 h-100">
-              <img src="./img/informática.jpg" class="card-img-top" alt="...">
+              <img src="./img/info.webp" class="card-img-top img-fluid" alt="Logo Informática">
               <div class="card-body">
                 <h5 class="card-title">Informática</h5>
                 <p class="card-text">Profissional especializado em criação, integração e manutenção de sistemas, desenvolvendo soluções personalizadas para software desktop e web. Utiliza linguagens modernas e boas práticas de desenvolvimento, além de atuar em modelagem e manutenção de banco de dados. Também oferece suporte técnico para redes e infraestrutura, com foco na solução de falhas em sistemas digitais.</p>
               </div>
               <div class="card-footer">
-                <a type="button" href="#info" class="btn btn-outline-primary">Ir para</a>
+                <a type="button" href="#info" class="btn btn-outline-primary" id="btnInfo">Ir para</a>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card w-100 h-100">
-              <img src="./img/mineração.jpg" class="card-img-top" alt="...">
+              <img src="./img/minera.webp" class="card-img-top img-fluid" alt="Logo Mineração">
               <div class="card-body">
                 <h5 class="card-title">Mineração</h5>
                 <p class="card-text">Profissional especializado em pesquisa, lavra e tratamento mineral, com foco em segurança, saúde e meio ambiente. Atua em projetos, processos de extração, sondagem, amostragem e caracterização de minérios. Também monitora a estabilidade de rochas e gerencia a manutenção de instalações e equipamentos do setor mineral.
                 </p>
               </div>
               <div class="card-footer">
-                <a type="button" href="#minera" class="btn btn-outline-danger">Ir para</a>
+                <a type="button" href="#minera" class="btn btn-outline-danger" id="btnMinera">Ir para</a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    <br>
 
     <!-- CURSOS -->
     <main>
-      <section id="eletro" class="text-bg-dark p-5 w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; min-height: 100vh;">
+      <section id="eletro" class="p-5 w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; min-height: 100vh;">
         <article class="container">
             <h3>Eletromecânica</h3>
 
@@ -162,60 +202,62 @@
               <small>por Verusa Pinho de Sá — publicado 26/10/2018 13h50, última modificação 07/02/2024 08h43</small>
               <div class="d-flex gap-2 align-items-center">
               
-                <button class="btn btn-dark">
+                <a class="btn" style="background-color: #4E5B69;" href="https://x.com/intent/post?original_referer=https%3A%2F%2Fportal.ifba.edu.br%2F&text=Eletromec%C3%A2nica&url=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Feletromecanica&via=ifbaoficial" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                         <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
                       </svg>
-                Postar</button>
-                <button class="btn btn-primary">
+                Postar</a>
+                <button class="btn" style="background-color: #4E5B69;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
                         <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
                       </svg>
                 Curtir</button>
-                <button class="btn btn-primary">
+                <a class="btn" style="background-color: #4E5B69;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Feletromecanica&display=popup&ref=plugin&src=like&kid_directed_site=0" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
                         <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
                       </svg>
-                Compartilhar</button>
+                Compartilhar</a>
             </div>
             </article>
             <p class="mt-5"><strong>Perfil</strong>: Desenvolve atividades de coordenação e assistência técnica em planejamento, montagem, instalação, controle, manutenção e avaliação de sistemas eletromecânicos; realiza atividades de programação e orientação na fabricação de peças, componentes e máquinas eletromecânicas; opera e supervisiona equipamentos elétricos industriais, identificando e sugerindo a solução de defeitos em máquinas elétricas; supervisiona a implantação de instalações elétricas prediais e industriais; projeta sistemas de eletrônica embarcada, bem como para instrumentação e controle de motores; identifica os elementos de conversão, transformação, transporte e distribuição de energia, aplicando-os nos trabalhos de implantação e manutenção do processo produtivo; participa de atividades de utilização e conservação de energia, propondo a racionalização e o uso de fontes alternativas.</p>
             
             <p><strong>Onde atua</strong>: empresas de manutenção e automação; indústrias; laboratórios de controle de qualidade e pesquisa; concessionárias de energia.</p>
             <p><strong>Duração mínima</strong>: 4 anos</p>
-            <p><strong>Coordenação</strong>: Patrícia Neves I Portaria de Nomeação I Lattes</p>
+            <p><strong>Coordenação</strong>: Patrícia Neves I Portaria de Nomeação I <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4487671A9" target="_blank">Lattes</a></p>
             <p><strong>Ramal</strong>: 8706 I E-mail: patricianeves@ifba.edu.br I cceletro.jac@ifba.edu.br</p>
             
             <article class="d-flex align-items-center flex-column">
-                <p>DOCUMENTOS</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                </svg> DOCUMENTOS</p>
                 
-                <a href="">Plano de Curso</a>
-                <a href="">Matriz Curricular</a>
+                <a href="https://portal.ifba.edu.br/jacobina/documentos/PLANODECURSOINTEGRADOELETROMECNICA.pdf" target="_blank">Plano de Curso</a>
+                <a href="https://portal.ifba.edu.br/jacobina/documentos/MATRIZ_ELETROMECANICA_INTEGRADO.pdf" target="_blank">Matriz Curricular</a>
             </article>
         </article>
     </section>
-      <section id="info" class=" p-5  w-100 d-flex flex-column justify-content-center" style="background-color: #0254c0; font-size: 18px; color: #fff; min-height: 100vh;">
+      <section id="info" class=" p-5  w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; min-height: 100vh;">
           <article class="container">
               <h3>Informática</h3>
               <article>
                   <small>por Verusa Pinho de Sá — publicado 26/10/2018 13h50, última modificação 11/10/2024 09h26</small>
                   <div class="d-flex gap-2 align-items-center">
               
-                      <button class="btn btn-dark">
+                      <a class="btn" style="background-color: #4a88d8;" href="https://x.com/intent/post?original_referer=https%3A%2F%2Fportal.ifba.edu.br%2F&text=Inform%C3%A1tica&url=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Finformatica&via=ifbaoficial" target="_blank">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                               <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
                             </svg>
-                      Postar</button>
-                      <button class="btn btn-primary">
+                      Postar</a>
+                      <button class="btn" style="background-color: #4a88d8;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
                               <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
                             </svg>
                       Curtir</button>
-                      <button class="btn btn-primary">
+                      <a class="btn" style="background-color: #4a88d8;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Finformatica&display=popup&ref=plugin&src=like&kid_directed_site=0" target="_blank">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
                               <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
                             </svg>
-                      Compartilhar</button>
+                      Compartilhar</a>
                   </div>
               </article>
               
@@ -229,20 +271,22 @@
                   <strong>Duração mínima:</strong> 4 anos
                   
               </p>
-              <p><strong>Coordenação:</strong> Gabriela Oliveira Mota da Silva Portaria de Nomeação I <a href="">Lattes</a></p>
+              <p><strong>Coordenação:</strong> Gabriela Oliveira Mota da Silva Portaria de Nomeação I <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4431625U8" target="_blank">Lattes</a></p>
               
               <p><strong>Ramal:</strong> 8706 I E-mail: gabriela.mota@ifba.edu.br I<strong> ccinfo.jac@ifba.edu.br</strong></p>
               
               <article class="d-flex align-items-center flex-column">
-                  <p>DOCUMENTOS</p>
+                  <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                  </svg> DOCUMENTOS</p>
                   
-                  <a href="">Plano de Curso</a>
-                  <a href="">Matriz Curricular</a>
+                  <a href="https://portal.ifba.edu.br/jacobina/documentos/PLANODECURSOINTEGRADOINFORMTICA.pdf" target="_blank">Plano de Curso</a>
+                  <a href="https://portal.ifba.edu.br/jacobina/documentos/MATRIZ_INFORMTICA.pdf" target="_blank">Matriz Curricular</a>
               </article>
           </article>
       </section>
 
-      <section id="minera" class="p-5  w-100 d-flex flex-column justify-content-center" style="  background-color: #6d0528; font-size: 18px; color: #fff; min-height: 100vh;" >
+      <section id="minera" class="p-5  w-100 d-flex flex-column justify-content-center" style="font-size: 18px; color: #fff; min-height: 100vh;" >
           <article class="container">
               <h3>Mineração</h3>
 
@@ -250,21 +294,21 @@
                   <small>por Verusa Pinho de Sá — publicado 26/10/2018 13h50, última modificação 27/10/2023 10h15
                   </small>
                   <div class="d-flex gap-2 align-items-center"> 
-                      <button class="btn btn-dark">
+                      <a class="btn" style="background-color: #AD345C;" href="https://x.com/intent/post?original_referer=https%3A%2F%2Fportal.ifba.edu.br%2F&text=Minera%C3%A7%C3%A3o&url=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Fmeio-ambiente&via=ifbaoficial" target="_blank">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                               <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334q.002-.211-.006-.422A6.7 6.7 0 0 0 16 3.542a6.7 6.7 0 0 1-1.889.518 3.3 3.3 0 0 0 1.447-1.817 6.5 6.5 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.32 9.32 0 0 1-6.767-3.429 3.29 3.29 0 0 0 1.018 4.382A3.3 3.3 0 0 1 .64 6.575v.045a3.29 3.29 0 0 0 2.632 3.218 3.2 3.2 0 0 1-.865.115 3 3 0 0 1-.614-.057 3.28 3.28 0 0 0 3.067 2.277A6.6 6.6 0 0 1 .78 13.58a6 6 0 0 1-.78-.045A9.34 9.34 0 0 0 5.026 15"/>
                           </svg>
-                      Postar</button>
-                      <button class="btn btn-primary">
+                      Postar</a>
+                      <button class="btn" style="background-color: #AD345C;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
                               <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
                           </svg>
                       Curtir</button>
-                      <button class="btn btn-primary">
+                      <a class="btn" style="background-color: #AD345C;" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.portal.ifba.edu.br%2Fjacobina%2Fcursos%2Fintegrado%2Fmeio-ambiente&display=popup&ref=plugin&src=like&kid_directed_site=0" target="_blank">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
                               <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
                           </svg>
-                      Compartilhar</button>
+                      Compartilhar</a>
                   </div>
               </article>
               <p class="mt-5">
@@ -272,14 +316,16 @@
               
               <p><strong>Onde atua</strong>: empresas de mineração e petróleo, consultoria e centros de pesquisa em mineração.</p>
               <p><strong>Duração mínima</strong>: 4 anos</p>
-              <p><strong>Coordenação</strong>: Frederico Fava Zogheib I Portaria de Nomeação I Lattes</p>
+              <p><strong>Coordenação</strong>: Frederico Fava Zogheib I Portaria de Nomeação I <a href="https://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8056975Y2" target="_blank">Lattes</a></p>
               <p><strong>Ramal</strong>: 8706 I E-mail: frederico.zogheib@ifba.edu.br I mineracao.jac@ifba.edu.br</p>
               
               <article class="d-flex align-items-center flex-column">
-                  <p>DOCUMENTOS</p>
+                  <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+                  </svg> DOCUMENTOS</p>
                   
-                  <a href="">Plano de Curso</a>
-                  <a href="">Matriz Curricular</a>
+                  <a href="https://portal.ifba.edu.br/jacobina/documentos/PLANODECURSOINTEGRADOMINERAO.pdf" target="_blank">Plano de Curso</a>
+                  <a href="https://portal.ifba.edu.br/jacobina/documentos/MATRIZ_MINERACAO_INTEGRADO.pdf" target="_blank">Matriz Curricular</a>
               </article>
       
           </article>
@@ -303,16 +349,16 @@
                     </svg> Institucional</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">O instituto</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Memória</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Organograma</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Quem é quem</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Atribuições e cargos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Eleições</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Processos seletivos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Acessoria internacional</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Contatos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Fale conosco</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/instituto">O instituto</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/memorial">Memória</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/organograma/">Organograma</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/quem-e-quem/">Quem é quem</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/atribuicoes-cargos/">Atribuições e cargos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/eleicoes">Eleições</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/menu-de-apoio/processos-seletivos">Processos seletivos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/prodin/assessoria-internacional/arinter">Acessoria internacional</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/contatoifba">Contatos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/fale-conosco/formulario">Fale conosco</a></li>
                   </ul>
                 </li>
               </ul>
@@ -329,9 +375,9 @@
                     </svg> Campi</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">Escolha o campus</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Diretores dos campi</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Ramais dos campi</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/campi/escolha-o-campus">Escolha o campus</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/campi/contatos-campi">Diretores dos campi</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/contatoifba">Ramais dos campi</a></li>
                   </ul>
                 </li>
               </ul>
@@ -348,10 +394,10 @@
                     </svg> Redes Sociais</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">Twitter</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Facebook</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Youtube</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Instagram</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://twitter.com/ifbaoficial">Twitter</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://www.facebook.com/InstitutoFederaldaBahia">Facebook</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://www.instagram.com/ifbaoficial/">Instagram</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://www.youtube.com/channel/UCyCPdBXqatYjrOhqY0k3sMQ">Youtube</a></li>
                   </ul>
                 </li>
               </ul>
@@ -368,16 +414,16 @@
                     </svg> Acesso à informação</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">Acesso à informação</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Carta de serviços ao cidadão</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Dados abertos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Documentos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Dúvidas frequentes</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Licitações e contratos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Serviço de informação ao Cidadão - eSIC</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Servidores</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Transparência IFBA</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Ouvidoria</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/menu-de-apoio/acesso-a-informacao">Acesso à informação</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/acessoainformacao/CartadeServio.pdf">Carta de serviços ao cidadão</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="http://dados.ifba.edu.br/">Dados abertos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/menu-institucional/doc">Documentos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/acessoinformacao/duvidas-frequentes">Dúvidas frequentes</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/proap/licitacoes">Licitações e contratos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://esic.cgu.gov.br/sistema/site/index.aspx">Serviço de informação ao Cidadão - eSIC</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/institucional/documento/documentos-institucionais/servidores">Servidores</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/menu-de-apoio/paginas-menu-de-apoio/transparencia-ifba">Transparência IFBA</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/menu-de-apoio/ouvidoria">Ouvidoria</a></li>
                   </ul>
                 </li>
               </ul>
@@ -394,15 +440,15 @@
                     </svg> Ensino</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">Seja nosso aluno</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Tipos de curso</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Nossos cursos</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Ensino a distância</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Assistência estudantil</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Processo Seletivo</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Certificação ENCCEJA/ENEM</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SISU</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Perguntas Frequentes</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/ensino/seja-nosso-aluno">Seja nosso aluno</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/ensino/tipos-de-cursos">Tipos de curso</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/ensino/nossos-cursos">Nossos cursos</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/ead">Ensino a distância</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/proen/departamentos/departamento-de-permanencia-e-assistencia-estudantil/dpae">Assistência estudantil</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/processoseletivo2024">Processo Seletivo</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/proen/certificacao/enem-encceja">Certificação ENCCEJA/ENEM</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/sisu/">SISU</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://portal.ifba.edu.br/ensino/perguntas-frequentes">Perguntas Frequentes</a></li>
                   </ul>
                 </li>
               </ul>
@@ -419,17 +465,17 @@
                     </svg> Sistemas</h5>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" target="_blank" href="#">Biblioteca</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SUAP</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SEI</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SEI - Pesquisa Pública</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Webmail</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SICAD</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SIGA</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SISPROC</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SIADS</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">SIAPENET</a></li>
-                    <li><a class="dropdown-item" target="_blank" href="#">Plano de metas</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://biblioteca.ifba.edu.br/">Biblioteca</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://suap.ifba.edu.br">SUAP</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://sei.ifba.edu.br/sip/login.php?sigla_orgao_sistema=IFBA&sigla_sistema=SEI">SEI</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://sei.ifba.edu.br/pesquisa_publica">SEI - Pesquisa Pública</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://webmailzimbra.ifba.edu.br/">Webmail</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://sso.gestaodeacesso.planejamento.gov.br/cassso/login">SICAD</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://sigaedu.ifba.edu.br:8181/sigaept-edu-web-v1/pages/inicio.jsf">SIGA</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="http://sisproc.ifba.edu.br/">SISPROC</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="https://siads.fazenda.gov.br/siadsweb/private/default">SIADS</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="http://www.siapenet.gov.br/Portal/Servico/Apresentacao.asp">SIAPENET</a></li>
+                    <li><a class="dropdown-item" target="_blank" href="http://proap.ifba.edu.br/relatorio/ifba_pmi">Plano de metas</a></li>
                   </ul>
                 </li>
               </ul>
@@ -443,5 +489,6 @@
         </div>
       </div>
     </footer>
+
 </body>
 </html>
